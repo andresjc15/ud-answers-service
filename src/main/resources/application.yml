@@ -1,0 +1,30 @@
+
+spring:
+  application:
+    name: ud-answers-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/ud_eleap_db?serverTimeZone=America/Lima
+    username: root
+    password: ispv
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+
+server:
+  port: 7020
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
+    status-page-url-path: /swagger-ui.html
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type: TRACE
